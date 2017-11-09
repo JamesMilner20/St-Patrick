@@ -1,0 +1,42 @@
+body {margin:0;}
+
+.part1a {
+  background-color: #0b5600;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  font-size: 130%;
+}
+
+#myNavbar a:hover {
+  background-color: #000000;
+  color: white;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+#myNavbar {
+  text-align: center;
+}
+
+/*Css for part2*/
+.part2 {
+  background: url(../images/car18.jpg) no-repeat center top fixed;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  background-size: 100% auto;
+}
+
+.part2 h4 {
+  padding-left: 5%;
+}
+
+.part2 h2,h4 {
+  text-align: center;
+}
