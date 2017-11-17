@@ -83,8 +83,15 @@ body {
 .part5 {
   background-color: #0b5600;
   color: #d0ebb1;
+
 }
 
 .copy {
   text-align: center;
+}
+
+/*article tab*/
+.article {
+  margin-top: 20%;
+  margin-bottom: 20%;
 }
