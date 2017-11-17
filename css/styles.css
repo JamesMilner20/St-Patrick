@@ -1,6 +1,5 @@
 body {
   margin:0;
-  font-size: 120%;
 }
 
 .part1a {
@@ -22,6 +21,10 @@ body {
     color: #d0ebb1;
 }
 
+.dropdown-menu > li > a {
+  display: inline-flex;
+}
+
 .navbar-inverse .dropdown-menu > li > a {
     color: #d0ebb1;
 }
@@ -35,7 +38,7 @@ body {
   background-color: #536a50;
   width: 100%;
   text-align: center;
-  position: relative;
+  position: absolute;
 }
 
 #myNavbar {
