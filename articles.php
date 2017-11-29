@@ -1,3 +1,37 @@
+<?php
+
+  if ($_POST["submit"]){
+
+    if (!$_POST['name']) {
+      $error="<br />Please enter your name";
+    }
+    if (!$_POST['email']) {
+      $error.="<br />Please enter your email";
+    }
+    if (!$_POST['article']) {
+      $error.="<br />Please post your article or poem";
+    }
+
+    if ($error) {
+      $result ='<div class="alert alert-danger"><strong>There were error(s) in the form:</strong>'.$error.'</div>';
+    } else {
+
+      if (mail("james@smaarv.com","coming from website","Name: ".$_POST['name']."
+
+      Email: ".$_POST['email']."
+
+      Comment: ".$_POST['article'])) {
+
+      $result ='<div class="alert alert-success">Thank you. Your post has been sent to the administrator to be reviewed</div>';
+
+      } else {
+        $result ='<div class="alert alert-danger"><strong>Sorry. There was an error. Please try again later</strong></div>';
+      }
+    }
+  }
+
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -9,11 +43,11 @@
   <script src="js\jquery-3.2.1.js" charset="utf-8"></script>
   <script src="js\bootstrap.min.js" type="text/javascript"></script>
   <script src="js\scripts.js" type="text/javascript"></script>
-  <script src="http://stpatrickweb.herokuapp.com/js/devless-sdk.js" class="devless-connection" devless-con-token="aaa07d051598361fc88dabc91358e6dc"></script>
   <title>St Patrick</title>
 </head>
 
 <body>
+<!-- <h2><?php echo "Hello. Today is " . date('l'); ?>.</h2> -->
 
   <nav class="navbar part1a navbar-inverse">
     <div class="container-fluid">
@@ -48,7 +82,7 @@
               <li><a href="Readings.html">Readings</a></li>
             </ul>
           </li>
-          <li class="active"><a href="articles.html">Articles</a></li>
+          <li class="active"><a href="articles.php">Articles</a></li>
         </ul>
       </div>
     </div>
@@ -58,17 +92,32 @@
   <div class="container fluid">
     <div class="article">
       <h3>Post an article or poem. This article will be published in the weekly bulletin</h3>
-      <div class="dv-notify"></div>
+      <?php echo $result; ?>
 
-      <form class="dv-signup" action="ArticlePosting">
-    <input type="text" name="username" placeholder="Enter username here">
-    <input type="email" name="email" placeholder="Enter email here">
-    <input type="number" name="phonenumber" placeholder="Enter phone number here">
-    <input type="text" name="firstname" placeholder="Enter first name here">
-    <input type="text" name="lastname" placeholder="Enter last name here">
-    <input type="password" name="password" placeholder="Enter password here">
-    <button type="submit">Signup</button>
-  </form>
+      <form method="post">
+        <div class="form-group">
+
+          <label for="name">Your Name:</label>
+          <input class="form-control" type="text" name="name" placeholder="Your Name:" value="<?php echo $_POST['name']; ?>"/>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="email">Your Email:</label>
+          <input class="form-control" type="email" name="email" placeholder="Your Email:" value="<?php echo $_POST['email']; ?>"/>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="article">Post Article:</label>
+          <textarea class="form-control" name="article" rows="8" cols="80"><?php echo $_POST['article']; ?></textarea>
+
+        </div>
+
+        <input type="submit" name="submit" class="btn btn-lg btn-success" value="Submit">
+      </form>
 
   </div>
   </div>
